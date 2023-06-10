@@ -1,0 +1,36 @@
+.keys{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    position: relative;
+    box-sizing: content-box;
+    margin: 1em;
+    width: 10.8em;
+
+    &-typing{
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+        width: 7.5em;
+        flex-grow: 1;
+    }
+
+    &-operation{
+        display: flex;
+        flex-direction: column-reverse;     
+    }
+
+    &-bottom{
+        display: flex;
+        align-items: center;
+    }
+
+    &-top{
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+    }
+}
