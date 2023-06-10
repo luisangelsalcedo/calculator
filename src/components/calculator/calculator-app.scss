@@ -1,6 +1,15 @@
 .calculator{
     box-shadow: 0 0 1em rgba($color: black, $alpha:.05);
-    width: 13em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2em;
+    
+    @media (min-width:500px) {
+        width: 13em;
+        font-size: 1.3em;
+    }
 }
 
 .code{
