@@ -1,9 +1,11 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer, useEffect, useState } from 'react';
 import { keys } from '../keys';
 import { calculatorReducer, initialState } from '../reducers';
+import { types } from '../types';
 
 export function useCalculator() {
   const [state, dispatch] = useReducer(calculatorReducer, initialState);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
   const onKeyPress = key => {
     if (keys[key]) {
@@ -29,5 +31,23 @@ export function useCalculator() {
     onKeyPress(target.getAttribute('data-val'));
   };
 
-  return { state, ...state, handleClick };
+  const deleteHistory = () => {
+    dispatch({
+      type: types.DELETE_HISTORY,
+    });
+    setIsHistoryOpen(false);
+  };
+
+  const openHistory = () => {
+    setIsHistoryOpen(open => !open);
+  };
+
+  return {
+    state,
+    ...state,
+    handleClick,
+    deleteHistory,
+    openHistory,
+    isHistoryOpen,
+  };
 }

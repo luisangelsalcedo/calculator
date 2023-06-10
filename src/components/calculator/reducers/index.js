@@ -8,12 +8,12 @@ export const initialState = {
   operand2: 0,
   result: '0',
   display: '',
-  message: '',
+  history: localStorage.getItem('calculator-history') || '',
 };
 
 export function calculatorReducer(state, action) {
   const { type, payload } = action;
-  const { start, operand1, operator, operand2, result } = state;
+  const { start, operand1, operator, operand2, result, history } = state;
 
   switch (type) {
     case types.TYPING: {
@@ -27,6 +27,7 @@ export function calculatorReducer(state, action) {
           ...initialState,
           operand1: Number(payload),
           result: payload,
+          history,
         };
       }
 
@@ -69,18 +70,30 @@ export function calculatorReducer(state, action) {
         return state;
       }
 
+      const newHistory = String(
+        `${operand1} ${keys[operator].label} ${operand2} = ${result}\n${history}`
+      );
+      localStorage.setItem('calculator-history', newHistory);
+
       return {
         ...state,
         start: true,
         operand1: result,
         result: String(result),
-        display: String(operand1 + keys[operator].label + operand2),
+        display: String(`${operand1} ${keys[operator].label} ${operand2}`),
+        history: newHistory,
       };
     }
 
     case types.CLEAN: {
-      return initialState;
+      return { ...initialState, history };
     }
+
+    case types.DELETE_HISTORY: {
+      localStorage.setItem('calculator-history', '');
+      return { ...state, history: '' };
+    }
+
     default:
       return state;
   }

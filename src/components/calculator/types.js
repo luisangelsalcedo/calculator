@@ -3,6 +3,6 @@ export const types = {
   PRINT: 'print',
   OPERATION: 'operation',
   RESULT: 'result',
-  DELETE: 'delete',
   CLEAN: 'clean',
+  DELETE_HISTORY: 'delete-history',
 };
