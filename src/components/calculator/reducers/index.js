@@ -74,7 +74,7 @@ export function calculatorReducer(state, action) {
         start: true,
         operand1: result,
         result: String(result),
-        display: String(operand1 + operator + operand2),
+        display: String(operand1 + keys[operator].label + operand2),
       };
     }
 
