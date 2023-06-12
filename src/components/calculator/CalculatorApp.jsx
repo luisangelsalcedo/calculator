@@ -1,8 +1,7 @@
-import { KeyGroup, KeyTop, KeyBottom, Display } from './components';
+import { KeyGroup, KeyTop, KeyBottom, Display, History } from './components';
 import { useCalculator } from './hooks';
-// import { keys } from './keys';
 import { types } from './types';
-import './calculator-app.scss';
+import './assets/scss/calculator-app.scss';
 
 export function CalculatorApp() {
   const {
@@ -20,23 +19,12 @@ export function CalculatorApp() {
     <>
       <div className='calculator'>
         {!!history && (
-          <>
-            <button className='calculator-history-btn' onClick={openHistory}>
-              History
-            </button>
-            <div
-              className={
-                isHistoryOpen
-                  ? 'active calculator-history'
-                  : 'calculator-history'
-              }
-            >
-              <div>
-                <textarea value={history} disabled={true}></textarea>
-                <button onClick={deleteHistory}>Delete</button>
-              </div>
-            </div>
-          </>
+          <History
+            handleClick={openHistory}
+            handleDelete={deleteHistory}
+            open={isHistoryOpen}
+            content={history}
+          />
         )}
 
         <Display display={display} result={result} />
