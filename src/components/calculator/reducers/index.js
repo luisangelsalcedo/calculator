@@ -46,6 +46,7 @@ export function calculatorReducer(state, action) {
         ...state,
         start: false,
         operator: payload,
+        operand2: 0,
         result: '0',
         display: result + keys[payload].label,
       };

@@ -14,8 +14,8 @@ export const keys = {
   9: { value: '9', type: types.TYPING },
 
   '+': { value: '+', label: '+', type: types.OPERATION },
-  '-': { value: '-', label: '-', type: types.OPERATION },
-  '*': { value: '*', label: 'x', type: types.OPERATION },
+  '-': { value: '-', label: '−', type: types.OPERATION },
+  '*': { value: '*', label: '×', type: types.OPERATION },
   '/': { value: '/', label: '÷', type: types.OPERATION },
 
   Escape: { value: 'Escape', label: 'C', type: types.CLEAN },
